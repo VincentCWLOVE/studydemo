@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue的指令集</title>
+	<style>
+		.hello {
+			background-color: red;
+			width: 200px;
+			height: 200px;
+			margin: 50px;
+		}
+		.world {
+			background-color: blue;
+			width: 200px;
+			height: 200px;
+			margin: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<h1 v-if="yes">Yes!</h1>
+		<h1 v-if="no">No!</h1>
+		<h1 v-if="age >= 25">Age: {{ age }}</h1>
+		<h1 v-if="name.indexOf('vin') >= 0">Name: {{ name }}</h1>
+		<h1 v-else>陈文</h1>
+	</div>
+	<div id="app2">
+		<table>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="st in students">
+					<td>{{ st.name  }}</td>
+					<td>{{ st.age  }}</td>
+					<td>{{ st.sex  }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="app3">
+		<input type="text" v-model="message">
+		<p>{{message}}</p>
+	</div>
+	<div id="app4">
+		<div v-bind:class="theClassName"></div>
+		<div v-bind:id="theIDName"></div>
+		<input type="text" v-bind:disabled="flag">
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>	
+		new Vue({
+			el: '#app1',
+			data: {
+				yes: true,
+				no: false,
+				age: 26,
+				name: 'vincent'
+			}
+		})
+		new Vue({
+			el: '#app2',
+			data: {
+				students: [{
+					name: '小明',
+					age: 18,
+					sex: '男'
+				}, {
+					name: '小红',
+					age: 22,
+					sex: '女'
+				}, {
+					name: '小强',
+					age: 22,
+					sex: '未知'
+				}, {
+					name: '小刚',
+					age: 23,
+					sex: '男'
+				}]
+			}
+		})
+		new Vue({
+			el: '#app3',
+			data: {
+				message:"vincent"
+			}
+		})
+		new Vue({
+			el: '#app4',
+			data: {
+				theClassName : "hello",
+				theIDName: "world",
+				flag:true
+			}
+		})
+	</script>
+</body>
+</html>
